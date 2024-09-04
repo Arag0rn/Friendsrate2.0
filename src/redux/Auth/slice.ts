@@ -7,7 +7,7 @@ import {
   register,
   updateUserData,
   forgotPassword,
-  resetPassword,
+  // resetPassword,
   setUserRate,
   updateImageProfile,
 }
@@ -103,12 +103,12 @@ const authSlice = createSlice({
         state.user.email = action.payload.email;
       }
     });
-    builder.addCase(resetPassword.fulfilled, (state, action) => {
-      if (state.user?.password !== undefined) {
-        state.user.password = action.payload.password;
-      }
-      state.token = action.payload.token;
-    });
+    // builder.addCase(resetPassword.fulfilled, (state, action) => {
+    //   if (state.user?.password !== undefined) {
+    //     state.user.password = action.payload.password;
+    //   }
+    //   state.token = action.payload.token;
+    // });
     builder.addCase(setUserRate.fulfilled, (state, action) => {
       if (state.user?.rate !== undefined) {
         state.user.rate = action.payload.rate;
