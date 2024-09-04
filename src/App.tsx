@@ -4,7 +4,7 @@ import { useAuth } from './redux/Hooks/useAuth';
 import { useEffect } from 'react';
 import { refreshUser } from './redux/Auth/operations';
 import { Route, Routes } from 'react-router-dom';
-import  { RestrictedRoute }  from "./RestrictedRoute.js";
+import  { RestrictedRoute }  from "./RestrictedRoute";
 import  { PrivateRoute } from "./PrivateRoute";
 import { LogPage } from './pages/LogPage.js';
 import { RegPage } from './pages/RegPage.js';
