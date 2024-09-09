@@ -9,6 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      borderRadius: {
+        'custom': '0px 20px 20px 0px',
+      },
       fontFamily: {
         primary: ['"Fixel Text"', 'sans-serif'],
         secondary: ['"SF Pro Text"', 'sans-serif'],
@@ -25,8 +28,8 @@ module.exports = {
           "primary": "#06142E",
           "secondary": "#667183",
           "accent": "#005CF9",
-          "neutral": "#06142E",
-          "base-100": "#ECF8FF",
+          "neutral": "#ECF8FF",
+          "base-100": "#06142E",
           "info": "#333E51",
           "error": "#FF4D4D",
         },
