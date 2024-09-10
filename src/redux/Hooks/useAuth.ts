@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { State } from '../../REDUX/store';
+import { State } from '../../redux/store';
  
 import {
   selectUser,

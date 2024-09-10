@@ -13,7 +13,7 @@ import SharedLayout from './components/SharedLayout/SharedLayout.js';
 import { ProfilePage } from './pages/ProfilePage.js';
 import { SettingsPage } from './pages/SettingsPage.js';
 import { RatingPage } from './pages/RatingPage.js';
-import { Dispatch } from './REDUX/store.js';
+import { Dispatch } from './redux/store.js';
 
 
 

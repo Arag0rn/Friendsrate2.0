@@ -160,7 +160,7 @@ export const resetPassword = createAsyncThunk(
   async (newPassword: NewPassword, thunkAPI) => {
     const { password, confirmPassword, token } = newPassword;
     try {
-      const res = await axios.post(`/api/user/reset-password/${token}`, { password, confirmPassword });
+      await axios.post(`/api/user/reset-password/${token}`, { password, confirmPassword });
 
       return { password, newPassword, token }
     }

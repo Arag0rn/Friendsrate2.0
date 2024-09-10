@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { Dispatch } from '../../../REDUX/store';
+import { Dispatch } from '../../../redux/store';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../../redux/Auth/operations';
 
@@ -37,8 +37,8 @@ export const SignInComponent = () => {
     validationSchema: SignupSchema,
     onSubmit: async (values, action) => {
         console.log('onSubmit сработал');
-  
-      console.log(values);
+        action.resetForm();
+        setShowPassword(true)
           setIsError(false);
         dispatch(logIn(values))
       setIsError(true);

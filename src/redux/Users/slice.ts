@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { getAllActive, getAllWithRate } from './operations';
-import { OpositUser } from '@/app/components/ConnectPage/AuthorizedUser';
+// import { OpositUser } from '@/app/components/ConnectPage/AuthorizedUser';
 
 export interface UserData {
     age(age: any): unknown;
@@ -21,7 +21,7 @@ export interface UsersState {
     users: UserData[],
     isRefreshing: boolean;
     isError: boolean;
-    userNames: OpositUser | null;
+    userNames: null;
 }
 
 type InitState = UsersState;  
@@ -68,12 +68,12 @@ const activeUsersSlice = createSlice({
         state.isError = false;
     });
     //rejected
-        builder.addCase(getAllActive.rejected, (state, action) => {
+        builder.addCase(getAllActive.rejected, (state) => {
         state.isRefreshing = false;
         state.isError = true;
     });
        //rejected
-       builder.addCase(getAllWithRate.rejected, (state, action) => {
+       builder.addCase(getAllWithRate.rejected, (state) => {
         state.isRefreshing = false;
         state.isError = true;
     });

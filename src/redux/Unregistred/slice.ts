@@ -30,7 +30,7 @@ const initialState: InitState = {
         state.isRefreshing = false;
       });
       //rejected
-      builder.addCase(fetchTempUser.rejected, (state, action) => {
+      builder.addCase(fetchTempUser.rejected, (state) => {
         state.isRefreshing = false;
         state.isError = true;
       });
