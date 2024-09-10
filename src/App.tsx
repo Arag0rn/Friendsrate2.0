@@ -9,11 +9,11 @@ import  { PrivateRoute } from "./PrivateRoute";
 import { LogPage } from './pages/LogPage.js';
 import { RegPage } from './pages/RegPage.js';
 import { MainPage } from './pages/MainPage.js';
-import { Dispatch } from './redux/store.js';
 import SharedLayout from './components/SharedLayout/SharedLayout.js';
 import { ProfilePage } from './pages/ProfilePage.js';
 import { SettingsPage } from './pages/SettingsPage.js';
 import { RatingPage } from './pages/RatingPage.js';
+import { Dispatch } from './REDUX/store.js';
 
 
 
@@ -31,21 +31,40 @@ export const App =()=>{
 return isRefreshing ? (
   <b>Refreshing user...</b>
 ) : (
-    <Routes>
-     <Route path="/" element={<SharedLayout />}>
-        <Route index element={<MainPage />} />
-        <Route path="/profile" element={<PrivateRoute redirectTo="/login" component={<ProfilePage />} />} />
-        <Route path="/settings" element={<PrivateRoute redirectTo="/login" component={<SettingsPage />} />} />
-        <Route path="/rating" element={<PrivateRoute redirectTo="/login" component={<RatingPage />} />} />
+  <Routes>
+      <Route
+        path="/"
+        
+        element={<PrivateRoute redirectTo="/login" component={SharedLayout} />}
+      >
+            <Route
+          path="mainpage"
+          element={<PrivateRoute redirectTo="/login" component={MainPage} />}
+        />
+
+        <Route
+          path="profile"
+          element={<PrivateRoute redirectTo="/login" component={ProfilePage} />}
+        />
+        <Route
+          path="settings"
+          element={<PrivateRoute redirectTo="/login" component={SettingsPage} />}
+        />
+        <Route
+          path="rating"
+          element={<PrivateRoute redirectTo="/login" component={RatingPage} />}
+        />
       </Route>
-    <Route path="login"  element={
-      <RestrictedRoute redirectTo="/contacts" component={<LogPage />}  />} />
-    <Route path="registration"  element={
-      <RestrictedRoute redirectTo="/contacts" component={<RegPage />}  />} />
-    <Route path="/contacts" element={
-      <PrivateRoute redirectTo="/login" component={<MainPage />} />} />
- 
-</Routes> 
+
+      <Route
+        path="/login"
+        element={<RestrictedRoute redirectTo="/mainpage" component={LogPage} />}
+      />
+      <Route
+        path="/registration"
+        element={<RestrictedRoute redirectTo="/mainpage" component={<RegPage />} />}
+      />
+    </Routes>
 );
 
 }

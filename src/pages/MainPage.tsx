@@ -2,6 +2,6 @@
 
 export const MainPage = () => {
   return (
-    <div>MainPage</div>
+    <div className="text-white">MainPage</div>
   )
 }

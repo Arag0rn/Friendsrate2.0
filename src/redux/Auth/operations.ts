@@ -26,11 +26,11 @@ interface RegisterData {
   verify?:boolean;
 };
 
-// interface NewPassword {
-//   password: string,
-//   confirmPassword: string,
-//   token: string,
-// }
+interface NewPassword {
+  password: string,
+  confirmPassword: string,
+  token: string,
+}
 
 interface UpdatedData {
   username?: string;
@@ -58,8 +58,8 @@ export const register = createAsyncThunk(
       const res = await axios.post('api/user/register', newUser);
       setAuthHeader(res.data.token);
       return res.data;
-    } catch (error: unknown) {
-      return thunkAPI.rejectWithValue(error);
+    } catch (error: any) {
+      return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
@@ -155,19 +155,19 @@ export const forgotPassword = createAsyncThunk(
     }
 });
 
-// export const resetPassword = createAsyncThunk(
-//   'auth/restore-password',
-//   async (newPassword: NewPassword, thunkAPI) => {
-//     const { password, confirmPassword, token } = newPassword;
-//     try {
-//       const res = await axios.post(`/api/user/reset-password/${token}`, { password, confirmPassword });
+export const resetPassword = createAsyncThunk(
+  'auth/restore-password',
+  async (newPassword: NewPassword, thunkAPI) => {
+    const { password, confirmPassword, token } = newPassword;
+    try {
+      const res = await axios.post(`/api/user/reset-password/${token}`, { password, confirmPassword });
 
-//       return { password, newPassword, token }
-//     }
-//     catch (error) {
-//       return thunkAPI.rejectWithValue(error);
-//     }
-// });
+      return { password, newPassword, token }
+    }
+    catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+});
 
 
 export const setUserRate = createAsyncThunk(
