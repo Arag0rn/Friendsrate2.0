@@ -1,9 +1,8 @@
+// global.d.ts
 declare global {
-    interface Window {
-      TelegramLoginWidget?: { 
-        dataOnauth: (user: unknown) => void;
-      };
-    }
+  interface Window {
+    onTelegramAuth?: (user: any) => void;
   }
-  
-  export {};
+}
+
+export {};

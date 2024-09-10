@@ -4,6 +4,8 @@ import * as Yup from 'yup';
 import { Dispatch } from '../../../redux/store';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../../redux/Auth/operations';
+import { TelegramLogin } from '../TelegramLogin';
+
 
 const SignupSchema = Yup.object().shape({
   email: Yup.string()
@@ -45,6 +47,7 @@ export const SignInComponent = () => {
       setErrorMessage('Електронна пошта вже зареєстрована');
     },
   });
+
 
   return (
     <div className="flex items-center justify-center h-screen">
@@ -125,13 +128,12 @@ export const SignInComponent = () => {
           </div>
 
           <div className="flex items-center justify-around mt-6">
-            <a href="https://api.friendsrate.org/api/user/facebook" className="flex items-center space-x-2">
-              <span className="text-gray-700">Facebook</span>
-            </a>
+              <TelegramLogin />
             <a href="https://api.friendsrate.org/api/user/google" className="flex items-center space-x-2">
               <span className="text-gray-700">Google</span>
             </a>
           </div>
+
         </form>
       </div>
     </div>
