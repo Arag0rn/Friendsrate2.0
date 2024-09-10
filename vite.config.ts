@@ -6,7 +6,7 @@ import tailwindcss from 'tailwindcss'
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/friendsrate2.0/',
+  base: '/',
   css: {
     postcss: {
       plugins: [
