@@ -208,6 +208,8 @@ export const telegramAuthorized = createAsyncThunk(
   async (userData: any, { rejectWithValue }) => {
     try {
       const response = await axios.post(`/api/user/telegram`, (userData))
+      console.log(userData);
+      
       return response.data; 
     } catch (error: any) {
       return rejectWithValue(error.message);
