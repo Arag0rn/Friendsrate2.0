@@ -200,3 +200,17 @@ export const googleAuthorized = createAsyncThunk('auth/google',
     window.location.href = process.env.NEXT_PUBLIC_GOOGLE_AUTHORIZED_URL as string;
   }
 );
+
+
+
+export const telegramAuthorized = createAsyncThunk(
+  'auth/telegram',
+  async (userData: any, { rejectWithValue }) => {
+    try {
+      const response = await axios.post(`/api/user/telegram`, (userData))
+      return response.data; 
+    } catch (error: any) {
+      return rejectWithValue(error.message);
+    }
+  }
+);
