@@ -23,56 +23,79 @@ const SharedLayout = () => {
       <nav
         className={`${
           isMobile
-            ? 'fixed bottom-0 w-full bg-base-300 p-4'
-            : 'lg:w-[120px] lg:static bg-neutral p-[35px] h-screen items-center rounded-custom'
+            ? 'fixed bottom-0 w-full bg-transparent p-6 mb-[34px] flex justify-center'
+            : 'lg:w-[120px] lg:static lg:bg-neutral lg:p-[35px] h-screen items-center rounded-custom'
         }`}
       >
         <ul className="flex flex-row lg:flex-col lg:justify-center items-center gap-4 lg:gap-6 h-full">
           <li>
             <NavLink to="/" className="">
-              <div className="w-[75px] h-[75px] bg-neutral rounded-full flex items-center justify-center lg:rounded-none">
-                <svg className="w-6 h-6 lg:w-10 lg:h-10 opacity-40">
+              <div className="w-[75px] h-[75px] lg:w-10 lg:h-10 bg-neutral rounded-full flex items-center justify-center lg:rounded-none">
+                <svg className="w-6 h-6 lg:w-10 lg:h-10">
                   <use href={`${sprite}#icon-home`} />
                 </svg>
               </div>
             </NavLink>
-          </li>
+                  </li>
+                  <li className=" -ml-[29px] lg:hidden">
+                       <svg className="w-[26px] h-[57px] ">
+                  <use href={`${sprite}#icon-separete`} />
+                </svg>
+                  </li>
 
-          <li>
+          <li className=" -ml-[29.8px] lg:-ml-0">
             <NavLink to="/rating" className="">
-              <div className="w-[75px] h-[75px] bg-neutral rounded-full flex items-center justify-center lg:rounded-none">
-                <svg className="w-6 h-6 lg:w-10 lg:h-10 opacity-40 fill-none stroke-primary">
+              <div className="w-[75px] h-[75px] lg:w-10 lg:h-10 bg-neutral rounded-full flex items-center justify-center lg:rounded-none">
+                <svg className="w-6 h-6 lg:w-10 lg:h-10  fill-none stroke-primary">
                   <use href={`${sprite}#icon-star`} />
                 </svg>
               </div>
             </NavLink>
-          </li>
+                  </li>
+                  
+                  <li className=" -ml-[29px] lg:hidden">
+                       <svg className="w-[26px] h-[57px] ">
+                  <use href={`${sprite}#icon-separete`} />
+                </svg>
+                  </li>
 
-          <li>
+          <li className=" -ml-[29.8px] lg:-ml-0">
             <NavLink to="/" className="">
-              <div className="w-[75px] h-[75px] bg-neutral rounded-full flex items-center justify-center lg:rounded-none">
-                <svg className="w-6 h-6 lg:w-10 lg:h-10 opacity-40 fill-none stroke-primary">
+              <div className="w-[75px] h-[75px] lg:w-10 lg:h-10 bg-neutral rounded-full flex items-center justify-center lg:rounded-none">
+                <svg className="w-6 h-6 lg:w-10 lg:h-10  fill-none stroke-primary">
                   <use href={`${sprite}#icon-bell`} />
                 </svg>
               </div>
             </NavLink>
-          </li>
+                  </li>
+                  
+                  <li className=" -ml-[29px] lg:hidden">
+                       <svg className="w-[26px] h-[57px] ">
+                  <use href={`${sprite}#icon-separete`} />
+                </svg>
+                  </li>
 
-          <li>
+          <li className=" -ml-[29.8px] lg:-ml-0">
             <NavLink to="/profile" className="">
-              <div className="w-[75px] h-[75px] bg-neutral rounded-full flex items-center justify-center lg:rounded-none">
-                <svg className="w-6 h-6 lg:w-10 lg:h-10 opacity-40">
-                  <use href={`${sprite}#icon-profile`} />
+              <div className="w-[75px] h-[75px]  lg:w-10 lg:h-10 bg-neutral rounded-full flex items-center justify-center lg:rounded-none hover:p-1  hover:bg-base-100 hover:rounded-full transition-all ">
+                <svg className="w-6 h-6 lg:w-10 lg:h-10 fill-current">
+                  <use className='flex z-10 ' href={`${sprite}#icon-profile`} />
                 </svg>
               </div>
             </NavLink>
-          </li>
+                  </li>
+                  
+                  <li className=" -ml-[29px] lg:hidden">
+                       <svg className="w-[26px] h-[57px] ">
+                  <use href={`${sprite}#icon-separete`} />
+                </svg>
+                  </li>
 
      
-          <li className="mt-auto">
+          <li className="mt-auto -ml-[29.8px] lg:-ml-0">
             <NavLink to="/setting" className="">
-              <div className="w-[75px] h-[75px] bg-neutral rounded-full flex items-center justify-center lg:rounded-none">
-                <svg className="w-6 h-6 lg:w-10 lg:h-10 opacity-40">
+              <div className="w-[75px] h-[75px] lg:w-10 lg:h-10 bg-neutral rounded-full flex items-center justify-center lg:rounded-none">
+                <svg className="w-6 h-6 lg:w-10 lg:h-10 ">
                   <use href={`${sprite}#icon-setting`} />
                 </svg>
               </div>
