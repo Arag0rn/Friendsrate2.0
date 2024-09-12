@@ -17,7 +17,7 @@ export default {
   languageOptions: {
     ecmaVersion: 2020,
     globals: globals.browser,
-    parser: parser, 
+    parser: parser,
     parserOptions: {
       ecmaFeatures: {
         jsx: true,
@@ -28,7 +28,7 @@ export default {
   plugins: {
     'react-hooks': reactHooks,
     'react-refresh': reactRefresh,
-    typescript, 
+    typescript,
   },
   rules: {
     ...reactHooks.configs.recommended.rules,

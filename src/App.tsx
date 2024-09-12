@@ -10,10 +10,11 @@ import { LogPage } from './pages/LogPage.js';
 import { RegPage } from './pages/RegPage.js';
 import { MainPage } from './pages/MainPage.js';
 import SharedLayout from './components/SharedLayout/SharedLayout.js';
-import { ProfilePage } from './pages/ProfilePage.js';
+
 import { SettingsPage } from './pages/SettingsPage.js';
 import { RatingPage } from './pages/RatingPage.js';
 import { Dispatch } from './redux/store.js';
+import ProfilePage from './pages/ProfilePage.js';
 
 
 
@@ -32,20 +33,23 @@ return isRefreshing ? (
   <b>Refreshing user...</b>
 ) : (
   <Routes>
-      <Route
+      {/* <Route
         path="/"
         
         element={<PrivateRoute redirectTo="/login" component={SharedLayout} />}
-      >
-            <Route
+      > */}
+            {/* <Route
           path="mainpage"
           element={<PrivateRoute redirectTo="/login" component={MainPage} />}
-        />
-
-        <Route
+        /> */}
+<Route path="/" element={<SharedLayout />}>
+        {/* Публічні сторінки */}
+        <Route path="mainpage" element={<MainPage />} />
+          <Route path="profile" element={<  ProfilePage  />} />
+        {/* <Route
           path="profile"
           element={<PrivateRoute redirectTo="/login" component={ProfilePage} />}
-        />
+        /> */}
         <Route
           path="settings"
           element={<PrivateRoute redirectTo="/login" component={SettingsPage} />}
