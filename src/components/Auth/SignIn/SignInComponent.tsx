@@ -4,7 +4,7 @@ import * as Yup from 'yup';
 import { Dispatch } from '../../../redux/store';
 import { useDispatch } from 'react-redux';
 import { logIn } from '../../../redux/Auth/operations';
-import { TelegramLogin } from '../TelegramLogin';
+import TelegramLogin from '../TelegramLogin';
 
 
 const SignupSchema = Yup.object().shape({

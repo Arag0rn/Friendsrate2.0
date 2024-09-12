@@ -10,6 +10,7 @@ import {
   resetPassword,
   setUserRate,
   updateImageProfile,
+  telegramAuthorized,
 }
   from './operations';
 
@@ -66,6 +67,10 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.isRefreshing = false;
     });
+    builder.addCase(telegramAuthorized.fulfilled, (state, action) => {
+      state.token = action.payload.token;  
+      state.isLoggedIn = true;
+    })
     builder.addCase(refreshUser.fulfilled, (state, action) => {
       state.user = action.payload;
       state.isLoggedIn = true;
@@ -127,6 +132,9 @@ const authSlice = createSlice({
     });
     builder.addCase(register.rejected, (state) => {
       state.isRefreshing = false;
+      state.isError = true;
+    });
+    builder.addCase(telegramAuthorized.rejected, (state) => {
       state.isError = true;
     });
 
