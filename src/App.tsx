@@ -26,25 +26,26 @@ export const App = () => {
     <b>Refreshing user...</b>
   ) : (
 <Routes>
-
-  <Route index element={<LogPage />} />
+<Route
+    index
+    element={
+      <RestrictedRoute redirectTo="/mainpage" component={LogPage} />
+    }
+  />
 
   <Route path="/" element={<SharedLayout />}>
     <Route
       path="mainpage"
       element={<PrivateRoute redirectTo="/login" component={MainPage} />}
     />
-
     <Route
       path="profile"
       element={<PrivateRoute redirectTo="/login" component={ProfilePage} />}
     />
-
     <Route
       path="settings"
       element={<PrivateRoute redirectTo="/login" component={SettingsPage} />}
     />
-
     <Route
       path="rating"
       element={<PrivateRoute redirectTo="/login" component={RatingPage} />}
