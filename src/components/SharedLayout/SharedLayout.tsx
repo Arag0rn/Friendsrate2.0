@@ -16,7 +16,7 @@ const SharedLayout = () => {
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    // Перевіряємо наявність bg-neutral на поточній сторінці
+
     useEffect(() => {
         const checkNeutralBackground = () => {
             const neutralContainer = document.querySelector('.mark');
@@ -29,7 +29,6 @@ const SharedLayout = () => {
 
         checkNeutralBackground();
 
-        // Оновлюємо стан при зміні маршруту
         window.addEventListener('popstate', checkNeutralBackground);
 
         return () => window.removeEventListener('popstate', checkNeutralBackground);

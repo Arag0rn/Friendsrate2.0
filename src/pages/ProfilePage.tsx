@@ -2,7 +2,7 @@ import React, { ChangeEvent } from 'react';
 import { useSelector } from 'react-redux';
 import { selectUser } from '../redux/Auth/selector';
 import { useAppDispatch } from '../redux/Hooks/hooks';
-import { logOut, updateImageProfile } from '../redux/Auth/operations';
+import { updateImageProfile } from '../redux/Auth/operations';
 
 const calculateAge = (birthDate: string | undefined): number => {
   if (!birthDate) return 0;
@@ -24,7 +24,7 @@ const calculateAge = (birthDate: string | undefined): number => {
 
 const ProfilePage: React.FC = () => {
   const userData = useSelector(selectUser);
-  const dispatch = useAppDispatch();  // Использование кастомного dispatch с типизацией
+  const dispatch = useAppDispatch();
   const avatarUrl = userData?.avatarURL as string;
 
   const handleChangeImage = (event: ChangeEvent<HTMLInputElement>) => {

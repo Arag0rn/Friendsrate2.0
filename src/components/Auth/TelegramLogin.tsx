@@ -15,8 +15,8 @@ class TelegramLogin extends Component<Props> {
         botName="FriendsRateFRT_bot"
         buttonSize={TLoginButtonSize.Large}
         lang="en"
-        usePic={false}
-        cornerRadius={20}
+        usePic={true}
+        cornerRadius={30}
         onAuthCallback={(user: any) => {
           console.log('Hello, user!', user);
           this.props.telegramAuthorized(user);
@@ -30,6 +30,7 @@ class TelegramLogin extends Component<Props> {
 
 const mapDispatchToProps = (dispatch: any) => ({
   telegramAuthorized: (user: any) => dispatch(telegramAuthorized(user))
+  
 });
 
 export default connect(null, mapDispatchToProps)(TelegramLogin);
