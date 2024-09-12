@@ -13,6 +13,7 @@ import { ProfilePage } from "./pages/ProfilePage.js";
 import { SettingsPage } from "./pages/SettingsPage.js";
 import { RatingPage } from "./pages/RatingPage.js";
 import { Dispatch } from "./redux/store.js";
+import { NotFoundPage } from "./pages/NotFoundPage.js";
 
 export const App = () => {
   const dispatch: Dispatch = useDispatch();
@@ -26,10 +27,10 @@ export const App = () => {
     <b>Refreshing user...</b>
   ) : (
 <Routes>
-<Route
+  <Route
     index
     element={
-      <RestrictedRoute redirectTo="/mainpage" component={LogPage} />
+      <RestrictedRoute redirectTo="/login" component={LogPage} />
     }
   />
 
@@ -56,6 +57,8 @@ export const App = () => {
     path="/login"
     element={<RestrictedRoute redirectTo="/mainpage" component={LogPage} />}
   />
+  
+  <Route path="*" element={<NotFoundPage />} />
 </Routes>
   );
 };
