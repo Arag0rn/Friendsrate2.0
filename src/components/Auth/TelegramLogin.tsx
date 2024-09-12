@@ -30,6 +30,7 @@ class TelegramLogin extends Component<Props> {
 
 const mapDispatchToProps = (dispatch: any) => ({
   telegramAuthorized: (user: any) => dispatch(telegramAuthorized(user))
+  
 });
 
 export default connect(null, mapDispatchToProps)(TelegramLogin);

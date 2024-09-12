@@ -9,6 +9,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      container: {
+        padding: '25px'
+      },
       borderRadius: {
         'custom': '0px 20px 20px 0px',
       },
