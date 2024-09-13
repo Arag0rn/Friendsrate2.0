@@ -27,48 +27,42 @@ export const App = () => {
   }
 
   const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <SharedLayout />, 
-      children: [
-        {
-          path: "mainpage",
-          element: (
-            <PrivateRoute redirectTo="/login" component={<MainPage />} />
-          ),
-        },
-        {
-          path: "profile",
-          element: (
-            <PrivateRoute redirectTo="/login" component={<ProfilePage />} />
-          ),
-        },
-        {
-          path: "settings",
-          element: (
-            <PrivateRoute redirectTo="/login" component={<SettingsPage />} />
-          ),
-        },
-        {
-          path: "rating",
-          element: (
-            <PrivateRoute redirectTo="/login" component={<RatingPage />} />
-          ),
-        },
-      ],
-    },
+
     {
       path: "/login",
       element: (
-        <RestrictedRoute redirectTo="/mainpage" component={<LogPage />} />
+        <RestrictedRoute redirectTo="/mainpage" component={LogPage } />
       ),
     },
+
+    {
+      path: "/",
+      element: <PrivateRoute redirectTo="/login" component={SharedLayout} />, 
+      children: [
+        {
+          path: "mainpage",
+          element: <MainPage />,
+        },
+        {
+          path: "profile",
+          element: <ProfilePage />,
+        },
+        {
+          path: "settings",
+          element: <SettingsPage />,
+        },
+        {
+          path: "rating",
+          element: <RatingPage />,
+        },
+      ],
+    },
+
     {
       path: "*", 
       element: <NotFoundPage />,
     },
   ]);
-
 
   return <RouterProvider router={router} />;
 };
