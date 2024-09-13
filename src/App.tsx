@@ -9,11 +9,12 @@ import { PrivateRoute } from "./PrivateRoute";
 import { LogPage } from "./pages/LogPage.js";
 import { MainPage } from "./pages/MainPage.js";
 import SharedLayout from "./components/SharedLayout/SharedLayout.js";
-import { ProfilePage } from "./pages/ProfilePage.js";
+
 import { SettingsPage } from "./pages/SettingsPage.js";
 import { RatingPage } from "./pages/RatingPage.js";
 import { Dispatch } from "./redux/store.js";
 import { NotFoundPage } from "./pages/NotFoundPage.js";
+import ProfilePage from "./pages/ProfilePage.js";
 
 export const App = () => {
   const dispatch: Dispatch = useDispatch();
@@ -26,35 +27,42 @@ export const App = () => {
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
-<Routes>
-  <Route
-    index
-    element={
-      <RestrictedRoute redirectTo="/mainpage" component={LogPage} />
-    }
-  />
 
-  <Route path="/" element={<SharedLayout />}>
-    <Route
-      path="mainpage"
-      element={<PrivateRoute redirectTo="/" component={MainPage} />}
-    />
-    <Route
-      path="profile"
-      element={<PrivateRoute redirectTo="/" component={ProfilePage} />}
-    />
-    <Route
-      path="settings"
-      element={<PrivateRoute redirectTo="/" component={SettingsPage} />}
-    />
-    <Route
-      path="rating"
-      element={<PrivateRoute redirectTo="/" component={RatingPage} />}
-    />
-  </Route>
-  
-  <Route path="*" element={<NotFoundPage />} />
-</Routes>
+    <Routes>
+      <Route
+        index
+        element={
+          <RestrictedRoute redirectTo="/login" component={LogPage} />
+        }
+      />
+
+      <Route path="/" element={<SharedLayout />}>
+        <Route
+          path="mainpage"
+          element={<PrivateRoute redirectTo="/login" component={MainPage} />}
+        />
+        <Route
+          path="profile"
+          element={<PrivateRoute redirectTo="/login" component={ProfilePage} />}
+        />
+        <Route
+          path="settings"
+          element={<PrivateRoute redirectTo="/login" component={SettingsPage} />}
+        />
+        <Route
+          path="rating"
+          element={<PrivateRoute redirectTo="/login" component={RatingPage} />}
+        />
+      </Route>
+
+      <Route
+        path="login"
+        element={<RestrictedRoute redirectTo="/mainpage" component={LogPage} />}
+      />
+
+      <Route path="*" element={<NotFoundPage />} />
+    </Routes>
+
   );
 };
 
