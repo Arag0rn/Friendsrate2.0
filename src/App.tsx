@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Route, Routes } from 'react-router-dom'
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { useAuth } from "./redux/Hooks/useAuth";
@@ -12,7 +12,6 @@ import ProfilePage from "./pages/ProfilePage.js";
 import { SettingsPage } from "./pages/SettingsPage.js";
 import { RatingPage } from "./pages/RatingPage.js";
 import { LogPage } from "./pages/LogPage.js";
-import { NotFoundPage } from "./pages/NotFoundPage.js";
 
 export const App = () => {
   const dispatch: Dispatch = useDispatch();
@@ -22,60 +21,36 @@ export const App = () => {
     dispatch(refreshUser());
   }, [dispatch]);
 
-  if (isRefreshing) {
-    return <b>Refreshing user...</b>;
-  }
+  return isRefreshing ? (
+    <b>Refreshing user...</b>
+  ) : (
+    <>
+<Routes>
+<Route path="/" element={<PrivateRoute redirectTo="/signin" element={<SharedLayout/>} />}>
 
-  const router = createBrowserRouter([
-    {
-      path: "/Friendsrate2.0/login",
-      element: <RestrictedRoute redirectTo="/Friendsrate2.0/mainpage" component={LogPage} 
-      
-      />, 
-    },
-    {
-      path: "/Friendsrate2.0/",
-      element: (
-        <PrivateRoute redirectTo="/Friendsrate2.0/login" component={SharedLayout} />
-      ),
-      children: [
-        {
-          path: "mainpage",
-          element: (
-            <PrivateRoute redirectTo="/Friendsrate2.0/login" component={MainPage} />
-          ),
-        },
-        {
-          path: "profile", 
-          element: (
-            <PrivateRoute redirectTo="/Friendsrate2.0/login" component={ProfilePage} />
-          ),
-        },
-        {
-          path: "settings", 
-          element: (
-            <PrivateRoute redirectTo="/Friendsrate2.0/login" component={SettingsPage } />
-          ),
-        },
-        {
-          path: "rating", 
-          element: (
-            <PrivateRoute redirectTo="/Friendsrate2.0/login" component={RatingPage} />
-          ),
-        },
-        {
-          path: "*",
-          element: <NotFoundPage />,
-        },
-      ],
-    },
-    {
-      path: "*",
-      element: <NotFoundPage />,
-    },
-  ]);
+<Route path="/mainpage" element={
+        <PrivateRoute redirectTo="/signin" element={<MainPage/>} />
+      }/> 
+ <Route path="/profile" element={
+        <PrivateRoute redirectTo="/signin" element={<ProfilePage/>} />
+      }/> 
+       <Route path="/settings" element={
+        <PrivateRoute redirectTo="/signin" element={<SettingsPage/>} />
+      }/> 
+       <Route path="/rating" element={
+        <PrivateRoute redirectTo="/signin" element={<RatingPage/>} />
+      }/> 
 
-  return <RouterProvider router={router} />; 
-};
+</Route>
+<Route
+      path="/signin"
+      index element={
+        <RestrictedRoute redirectTo="/" element={<LogPage/>} />
+      }
+    />
+</Routes> 
+</>
+  )
+    }
 
 export default App;
