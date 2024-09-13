@@ -29,6 +29,8 @@ export const App = () => {
   ) : (
 
     <Routes>
+    <Route path="/" element={<SharedLayout />}>
+
     {/* Public routes */}
     <Route
       path="/login"
@@ -36,7 +38,7 @@ export const App = () => {
     />
 
     {/* Private routes */}
-    <Route path="/" element={<SharedLayout />}>
+
       <Route
         path="mainpage"
         element={<PrivateRoute redirectTo="/login" component={MainPage} />}
