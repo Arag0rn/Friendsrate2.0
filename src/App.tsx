@@ -29,14 +29,16 @@ export const App = () => {
   ) : (
 
     <Routes>
-      <Route
+    <Route path="/" element={<SharedLayout />}>
+    
+    <Route
         index
         element={
           <RestrictedRoute redirectTo="/mainpage" component={LogPage} />
         }
       />
 
-      <Route path="/" element={<SharedLayout />}>
+ 
         <Route
           path="mainpage"
           element={<PrivateRoute redirectTo="/" component={MainPage} />}
