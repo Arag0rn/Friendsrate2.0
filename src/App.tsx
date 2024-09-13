@@ -3,7 +3,7 @@ import "./App.css";
 import { useAuth } from "./redux/Hooks/useAuth";
 import { useEffect } from "react";
 import { refreshUser } from "./redux/Auth/operations";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import { RestrictedRoute } from "./RestrictedRoute";
 import { PrivateRoute } from "./PrivateRoute";
 import { LogPage } from "./pages/LogPage.js";
@@ -18,7 +18,7 @@ import ProfilePage from "./pages/ProfilePage.js";
 
 export const App = () => {
   const dispatch: Dispatch = useDispatch();
-  const { isRefreshing } = useAuth();
+  const { isLoggedIn, isRefreshing } = useAuth();
 
   useEffect(() => {
     dispatch(refreshUser());
@@ -29,43 +29,40 @@ export const App = () => {
   ) : (
 
     <Routes>
-    <Route path="/" element={<SharedLayout />}>
-    
+    {/* Public routes */}
     <Route
-        index
-        element={
-          <RestrictedRoute redirectTo="/mainpage" component={LogPage} />
-        }
-      />
+      path="/login"
+      element={<RestrictedRoute redirectTo="/mainpage" component={LogPage} />}
+    />
 
- 
-        <Route
-          path="mainpage"
-          element={<PrivateRoute redirectTo="/" component={MainPage} />}
-        />
-        <Route
-          path="profile"
-          element={<PrivateRoute redirectTo="/" component={ProfilePage} />}
-        />
-        <Route
-          path="settings"
-          element={<PrivateRoute redirectTo="/" component={SettingsPage} />}
-        />
-        <Route
-          path="rating"
-          element={<PrivateRoute redirectTo="/" component={RatingPage} />}
-        />
-      </Route>
-
+    {/* Private routes */}
+    <Route path="/" element={<SharedLayout />}>
       <Route
-        path="login"
-        element={<RestrictedRoute redirectTo="/" component={LogPage} />}
+        path="mainpage"
+        element={<PrivateRoute redirectTo="/login" component={MainPage} />}
       />
+      <Route
+        path="profile"
+        element={<PrivateRoute redirectTo="/login" component={ProfilePage} />}
+      />
+      <Route
+        path="settings"
+        element={<PrivateRoute redirectTo="/login" component={SettingsPage} />}
+      />
+      <Route
+        path="rating"
+        element={<PrivateRoute redirectTo="/login" component={RatingPage} />}
+      />
+    </Route>
 
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+    {/* Redirect non-logged users to the login page by default */}
+    <Route path="/" element={isLoggedIn ? <Navigate to="/mainpage" /> : <Navigate to="/login" />} />
 
-  );
+    {/* 404 Page */}
+    <Route path="*" element={<NotFoundPage />} />
+  </Routes>
+);
 };
+
 
 export default App;
