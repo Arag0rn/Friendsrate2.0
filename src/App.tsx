@@ -27,44 +27,55 @@ export const App = () => {
   }
 
   const router = createBrowserRouter([
-
     {
-      path: "/login",
-      element: (
-        <RestrictedRoute redirectTo="/mainpage" component={LogPage } />
-      ),
+      path: "/Friendsrate2.0/login",
+      element: <RestrictedRoute redirectTo="/Friendsrate2.0/mainpage" component={LogPage} 
+      
+      />, 
     },
-
     {
-      path: "/",
-      element: <PrivateRoute redirectTo="/login" component={SharedLayout} />, 
+      path: "/Friendsrate2.0/",
+      element: (
+        <PrivateRoute redirectTo="/Friendsrate2.0/login" component={SharedLayout} />
+      ),
       children: [
         {
           path: "mainpage",
-          element: <MainPage />,
+          element: (
+            <PrivateRoute redirectTo="/Friendsrate2.0/login" component={MainPage} />
+          ),
         },
         {
-          path: "profile",
-          element: <ProfilePage />,
+          path: "profile", 
+          element: (
+            <PrivateRoute redirectTo="/Friendsrate2.0/login" component={ProfilePage} />
+          ),
         },
         {
-          path: "settings",
-          element: <SettingsPage />,
+          path: "settings", 
+          element: (
+            <PrivateRoute redirectTo="/Friendsrate2.0/login" component={SettingsPage } />
+          ),
         },
         {
-          path: "rating",
-          element: <RatingPage />,
+          path: "rating", 
+          element: (
+            <PrivateRoute redirectTo="/Friendsrate2.0/login" component={RatingPage} />
+          ),
+        },
+        {
+          path: "*",
+          element: <NotFoundPage />,
         },
       ],
     },
-
     {
-      path: "*", 
+      path: "*",
       element: <NotFoundPage />,
     },
   ]);
 
-  return <RouterProvider router={router} />;
+  return <RouterProvider router={router} />; 
 };
 
 export default App;

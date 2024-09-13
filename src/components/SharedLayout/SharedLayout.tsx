@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import BackgroundBlurs from '../BlurSpot';
 import sprite from '../../assets/icons.svg';
@@ -54,7 +54,7 @@ const SharedLayout = () => {
             >
                 <ul className="flex flex-row lg:flex-col lg:justify-center items-center gap-4 lg:gap-6 h-full">
                     <li>
-                        <NavLink to="/" className="">
+                        <Link to="mainpage" className="">
                             <div className={`w-[75px] h-[75px] lg:w-10 lg:h-10 ${isNeutralBackground ? 'bg-base-100' : 'bg-neutral'} lg:bg-neutral  rounded-full flex items-center justify-center lg:rounded-none relative group`}>
                                 <div className={`w-[80%] lg:w-full h-[80%] lg:h-full lg:p-[5px] flex items-center justify-center transition-all duration-300 ease-in-out ${isNeutralBackground ? 'hover:bg-neutral' : 'hover:bg-base-100'}  lg:hover:bg-accent hover:rounded-full lg:hover:rounded-[15px]`}>
                                     <svg className={`w-6 h-6 lg:w-10 lg:h-10 ${isNeutralBackground ? 'fill-neutral' : 'fill-primary'} lg:fill-primary  transition-colors group-hover:fill-current`}>
@@ -62,7 +62,7 @@ const SharedLayout = () => {
                                     </svg>
                                 </div>
                             </div>
-                        </NavLink>
+                        </Link>
                     </li>
 
                     <li className=" -ml-[29px] lg:hidden ">
@@ -72,7 +72,7 @@ const SharedLayout = () => {
                     </li>
 
                     <li className=" -ml-[29.8px] lg:-ml-0">
-                        <NavLink to="/rating" className="">
+                        <Link to="rating" className="">
                             <div className={`w-[75px] h-[75px] lg:w-10 lg:h-10 ${isNeutralBackground ? 'bg-base-100' : 'bg-neutral'} lg:bg-neutral rounded-full flex items-center justify-center lg:rounded-none relative group`}>
                                 <div className={`w-[80%] lg:w-full h-[80%] lg:h-full lg:p-[5px] flex items-center justify-center transition-all duration-300 ease-in-out ${isNeutralBackground ? 'hover:bg-neutral' : 'hover:bg-base-100'}  lg:hover:bg-accent hover:rounded-full lg:hover:rounded-[15px]`}>
                                     <svg className={`w-6 h-6 lg:w-10 lg:h-10 ${isNeutralBackground ? 'stroke-neutral' : 'stroke-primary'} lg:stroke-primary fill-none transition-colors group-hover:stroke-current`}>
@@ -80,7 +80,7 @@ const SharedLayout = () => {
                                     </svg>
                                 </div>
                             </div>
-                        </NavLink>
+                        </Link>
                     </li>
 
                     <li className=" -ml-[29px] lg:hidden">
@@ -90,7 +90,7 @@ const SharedLayout = () => {
                     </li>
 
                     <li className=" -ml-[29.8px] lg:-ml-0">
-                        <NavLink to="/" className="">
+                        <Link to="rating" className="">
                             <div className={`w-[75px] h-[75px] lg:w-10 lg:h-10 ${isNeutralBackground ? 'bg-base-100' : 'bg-neutral'} lg:bg-neutral  rounded-full flex items-center justify-center lg:rounded-none relative group`}>
                                 <div className={`w-[80%] lg:w-full h-[80%] lg:h-full lg:p-[5px] flex items-center justify-center transition-all duration-300 ease-in-out ${isNeutralBackground ? 'hover:bg-neutral' : 'hover:bg-base-100'}  lg:hover:bg-accent hover:rounded-full lg:hover:rounded-[15px]`}>
                                     <svg className={`w-6 h-6 lg:w-10 lg:h-10 ${isNeutralBackground ? 'stroke-neutral' : 'stroke-primary'} lg:stroke-primary fill-none transition-colors group-hover:stroke-current`}>
@@ -98,7 +98,7 @@ const SharedLayout = () => {
                                     </svg>
                                 </div>
                             </div>
-                        </NavLink>
+                        </Link>
                     </li>
 
                     <li className=" -ml-[29px] lg:hidden">
@@ -108,7 +108,7 @@ const SharedLayout = () => {
                     </li>
 
                     <li className=" -ml-[29.8px] lg:-ml-0">
-                        <NavLink to="/profile" className="">
+                        <Link to="profile" className="">
                             <div className={`w-[75px] h-[75px] lg:w-10 lg:h-10 ${isNeutralBackground ? 'bg-base-100' : 'bg-neutral'} lg:bg-neutral  rounded-full flex items-center justify-center lg:rounded-none relative group`}>
                                 <div className={`w-[80%] lg:w-full h-[80%] lg:h-full lg:p-[5px] flex items-center justify-center transition-all duration-300 ease-in-out ${isNeutralBackground ? 'hover:bg-neutral' : 'hover:bg-base-100'}  lg:hover:bg-accent hover:rounded-full lg:hover:rounded-[15px]`}>
                                     <svg className={`w-6 h-6 lg:w-10 lg:h-10 ${isNeutralBackground ? 'fill-neutral' : 'fill-primary'} lg:fill-primary  transition-colors group-hover:fill-current`}>
@@ -116,7 +116,7 @@ const SharedLayout = () => {
                                     </svg>
                                 </div>
                             </div>
-                        </NavLink>
+                        </Link>
                     </li>
 
                     <li className=" -ml-[29px] lg:hidden">
@@ -126,7 +126,7 @@ const SharedLayout = () => {
                     </li>
 
                     <li className="mt-auto -ml-[29.8px] lg:-ml-0">
-                        <NavLink to="/setting" className="">
+                        <Link to="setting" className="">
                             <div className={`w-[75px] h-[75px] lg:w-10 lg:h-10 ${isNeutralBackground ? 'bg-base-100' : 'bg-neutral'} lg:bg-neutral  rounded-full flex items-center justify-center lg:rounded-none relative group`}>
                                 <div className={`w-[80%] lg:w-full h-[80%] lg:h-full lg:p-[5px] flex items-center justify-center transition-all duration-300 ease-in-out ${isNeutralBackground ? 'hover:bg-neutral' : 'hover:bg-base-100'}  lg:hover:bg-accent hover:rounded-full lg:hover:rounded-[15px]`}>
                                     <svg className={`w-6 h-6 lg:w-10 lg:h-10 ${isNeutralBackground ? 'fill-neutral' : 'fill-primary'} lg:fill-primary  transition-colors group-hover:fill-current`}>
@@ -134,7 +134,7 @@ const SharedLayout = () => {
                                     </svg>
                                 </div>
                             </div>
-                        </NavLink>
+                        </Link>
                     </li>
                 </ul>
             </nav>
