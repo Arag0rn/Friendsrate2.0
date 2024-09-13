@@ -32,32 +32,32 @@ export const App = () => {
       <Route
         index
         element={
-          <RestrictedRoute redirectTo="/login" component={LogPage} />
+          <RestrictedRoute redirectTo="/mainpage" component={LogPage} />
         }
       />
 
       <Route path="/" element={<SharedLayout />}>
         <Route
           path="mainpage"
-          element={<PrivateRoute redirectTo="/login" component={MainPage} />}
+          element={<PrivateRoute redirectTo="/" component={MainPage} />}
         />
         <Route
           path="profile"
-          element={<PrivateRoute redirectTo="/login" component={ProfilePage} />}
+          element={<PrivateRoute redirectTo="/" component={ProfilePage} />}
         />
         <Route
           path="settings"
-          element={<PrivateRoute redirectTo="/login" component={SettingsPage} />}
+          element={<PrivateRoute redirectTo="/" component={SettingsPage} />}
         />
         <Route
           path="rating"
-          element={<PrivateRoute redirectTo="/login" component={RatingPage} />}
+          element={<PrivateRoute redirectTo="/" component={RatingPage} />}
         />
       </Route>
 
       <Route
         path="login"
-        element={<RestrictedRoute redirectTo="/mainpage" component={LogPage} />}
+        element={<RestrictedRoute redirectTo="/" component={LogPage} />}
       />
 
       <Route path="*" element={<NotFoundPage />} />
