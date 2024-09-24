@@ -8,13 +8,13 @@ import { persistor, store } from "./redux/store.ts";
 import { BrowserRouter } from "react-router-dom";
 
 createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-      <BrowserRouter basename="/Friendsrate2.0">
-          <App />
-          </BrowserRouter>
-      </PersistGate>
-    </Provider>
-  </StrictMode>
+	<StrictMode>
+		<Provider store={store}>
+			<PersistGate loading={null} persistor={persistor}>
+				<BrowserRouter basename="/Friendsrate2.0">
+					<App />
+				</BrowserRouter>
+			</PersistGate>
+		</Provider>
+	</StrictMode>
 );

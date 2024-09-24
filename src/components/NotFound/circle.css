@@ -1,0 +1,37 @@
+.castom-circle {
+	background: radial-gradient(
+			circle 418px at 110% 35%,
+			rgba(0, 91, 249, 0.25) 0%,
+			rgba(255, 255, 255, 0) 100%
+		),
+		radial-gradient(
+			circle 244px at -5% 65%,
+			rgba(0, 91, 249, 0.25) 0%,
+			rgba(255, 255, 255, 0) 100%
+		);
+}
+
+@media screen and (min-width: 1280px) {
+	.castom-circle {
+		background: radial-gradient(
+				circle 618px at 85% 25%,
+				rgba(0, 91, 249, 0.25) 0%,
+				rgba(255, 255, 255, 0) 100%
+			),
+			radial-gradient(
+				circle 418px at 75% 75%,
+				rgba(0, 91, 249, 0.25) 0%,
+				rgba(255, 255, 255, 0) 100%
+			),
+			radial-gradient(
+				circle 344px at 0% 5%,
+				rgba(0, 91, 249, 0.25) 0%,
+				rgba(255, 255, 255, 0) 100%
+			),
+			radial-gradient(
+				circle 344px at 1% 95%,
+				rgba(0, 91, 249, 0.25) 0%,
+				rgba(255, 255, 255, 0) 100%
+			);
+	}
+}
