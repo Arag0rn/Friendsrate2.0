@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 
 
 const getRandomValue = (min: number, max: number) => Math.random() * (max - min) + min;
@@ -21,7 +22,7 @@ const BlurSpot: React.FC = () => {
 
   return (
     <div
-      className={`absolute bg-accent rounded-full blur-3xl transition-all duration-[4000ms] ease-in-out ${visible ? 'opacity-25 scale-100' : 'opacity-0 scale-75'}`}
+      className={`absolute bg-accent rounded-full blur-3xl transition-all duration-[4000ms] ease-in-out z-[-1] ${visible ? 'opacity-25 scale-100' : 'opacity-0 scale-75'}`}
       style={{
         width: `${size}px`,
         height: `${size}px`,
@@ -32,14 +33,15 @@ const BlurSpot: React.FC = () => {
   );
 };
 
-const BackgroundBlurs: React.FC = () => {
-  const spots = Array.from({ length: 5 }); 
+const BackgroundBlurs: React.FC<React.PropsWithChildren<{}>> = ({ children }) => {
+  const spots = Array.from({ length: 5 });
 
   return (
-    <div className="fixed inset-0 z-[-1] overflow-hidden">
+    <div className="fixed inset-0  overflow-hidden">
       {spots.map((_, index) => (
         <BlurSpot key={index} />
       ))}
+      {children}
     </div>
   );
 };

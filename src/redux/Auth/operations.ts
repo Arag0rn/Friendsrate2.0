@@ -173,7 +173,6 @@ export const resetPassword = createAsyncThunk(
 export const setUserRate = createAsyncThunk(
   'auth/setUserRate',
   async (userData: RateData, thunkAPI) => {
-    console.log(userData);
     try {
       const res = await axios.patch('/api/user/set-rate', userData);
       return res.data;
@@ -208,7 +207,7 @@ export const telegramAuthorized = createAsyncThunk(
   async (userData: any, { rejectWithValue }) => {
     try {
       const response = await axios.post(`/api/user/telegram`, (userData))
-      console.log(userData);
+   
       
       return response.data; 
     } catch (error: any) {

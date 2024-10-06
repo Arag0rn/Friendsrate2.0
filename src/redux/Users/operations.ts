@@ -8,11 +8,9 @@ interface GetAllActiveData {
   export const getAllActive = createAsyncThunk(
     'users/getAllActive',
     async (data: GetAllActiveData, thunkAPI) => {
-      console.log(data.activeUser);
       
       try {
         const res = await axios.post('/api/user/get-all', { users: data.activeUser }); 
-        console.log(res.data);
         return res.data;
         
       } catch (error) {
@@ -29,7 +27,6 @@ export const getAllWithRate = createAsyncThunk(
  
     try {
       const res = await axios.post('/api/user/get-all-rate'); 
-      console.log(res.data);
       return res.data;
       
     } catch (error) {

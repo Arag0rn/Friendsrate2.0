@@ -5,3 +5,6 @@ export const selectIsLoggedIn = (state: { auth: AuthState }) => state.auth.isLog
 export const selectUser = (state: { auth: AuthState }) => state.auth.user;
 
 export const selectIsRefreshing = (state: { auth: AuthState }) => state.auth.isRefreshing;
+
+
+export const selectIsRehydrated = (state: { auth: AuthState }) => state.auth.isRehydrated ;

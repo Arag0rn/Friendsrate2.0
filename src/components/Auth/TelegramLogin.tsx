@@ -18,7 +18,6 @@ class TelegramLogin extends Component<Props> {
         usePic={true}
         cornerRadius={30}
         onAuthCallback={(user: any) => {
-          console.log('Hello, user!', user);
           this.props.telegramAuthorized(user);
         }}
         requestAccess={'write'}

@@ -6,7 +6,6 @@ import tailwindcss from 'tailwindcss'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/Friendsrate2.0/',
   css: {
     postcss: {
       plugins: [

@@ -13,6 +13,7 @@ import {
   telegramAuthorized,
 }
   from './operations';
+import { REHYDRATE } from 'redux-persist';
 
 
 
@@ -22,6 +23,7 @@ export interface AuthState {
   isError: boolean;
   token: string | null;
   data: null;
+  isRehydrated: boolean;  
   user: {
     username?: string | '';
     birthday?: string | '';
@@ -29,12 +31,12 @@ export interface AuthState {
     email: string | '';
     password: string | '';
     avatarURL?: string | '';
-    verify?:boolean ;
+    verify?: boolean;
     about?: string | '';
     language?: string | '';
     _id?: string | '';
-    rate?: number | null ;
-    ratingCount?: number | null ;
+    rate?: number | null;
+    ratingCount?: number | null;
   } | null;
 }
 
@@ -47,6 +49,7 @@ const initialState: InitState = {
   isLoggedIn: false,
   isRefreshing: false,
   isError: false,
+  isRehydrated: false,
 };
 
 const authSlice = createSlice({
@@ -70,6 +73,8 @@ const authSlice = createSlice({
     builder.addCase(telegramAuthorized.fulfilled, (state, action) => {
       state.token = action.payload.token;  
       state.isLoggedIn = true;
+      state.isRefreshing = false;
+
     })
     builder.addCase(refreshUser.fulfilled, (state, action) => {
       state.user = action.payload;
@@ -88,6 +93,14 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.isRefreshing = false;
       state.isError = false;
+    });
+    builder.addCase(REHYDRATE, (state, action: any) => {
+      if (action.payload && action.payload.auth) {
+        state.token = action.payload.auth.token;
+        state.user = action.payload.auth.user;
+        state.isLoggedIn = true;
+      }
+      state.isRehydrated = true;
     });
     builder.addCase(logOut.fulfilled, (state) => {
       state.user = null;
@@ -127,8 +140,9 @@ const authSlice = createSlice({
 
     // rejected
     builder.addCase(refreshUser.rejected, (state) => {
+
       state.isRefreshing = false;
-      state.isError = true;
+
     });
     builder.addCase(register.rejected, (state) => {
       state.isRefreshing = false;
@@ -140,12 +154,12 @@ const authSlice = createSlice({
 
     // pending
     builder.addCase(refreshUser.pending, (state) => {
-      state.isRefreshing = true;
-      state.isError = false;
+      state.isRefreshing = true; 
     });
     builder.addCase(register.pending, (state) => {
       state.isRefreshing = true;
     });
+
   },
 });
 

@@ -20,7 +20,7 @@ import { nonAuthReducer } from "./Unregistred/slice";
 const authPersistConfig = {
   key: 'auth',
   storage: storage,
-  whitelist: ['token'],
+  whitelist: ['token', 'user'],
 };
 
 
@@ -37,7 +37,7 @@ export const store = configureStore({
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
     }),
-
+    devTools: process.env.NODE_ENV === 'development',
 });
 
 export const persistor = persistStore(store);

@@ -17,6 +17,7 @@
     "i": "^0.3.7",
     "normalize": "^0.3.1",
     "npm": "^10.8.3",
+    "peerjs": "^1.5.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-helmet": "^6.1.0",
@@ -24,7 +25,9 @@
     "react-router-dom": "^6.26.1",
     "react-telegram-auth": "^1.0.4",
     "redux-persist": "^6.0.0",
+    "socket.io-client": "^4.8.0",
     "telegram": "^2.24.11",
+    "uuid": "^10.0.0",
     "yup": "^1.4.0"
   },
   "devDependencies": {
@@ -33,6 +36,7 @@
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
     "@types/react-helmet": "^6.1.11",
+    "@types/uuid": "^10.0.0",
     "@vitejs/plugin-react": "^4.3.1",
     "daisyui": "^4.12.10",
     "eslint-plugin-react-refresh": "^0.4.9",

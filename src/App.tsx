@@ -12,55 +12,80 @@ import ProfilePage from "./pages/ProfilePage.js";
 import { SettingsPage } from "./pages/SettingsPage.js";
 import { RatingPage } from "./pages/RatingPage.js";
 import { LogPage } from "./pages/LogPage.js";
+import { ConnectPage } from "./pages/ConnectPage.js";
+import { RoomProvider } from "./components/Context/RoomContext.js";
+import ChatRoom from "./pages/ChatRoom.js";
 
 export const App = () => {
   const dispatch: Dispatch = useDispatch();
-  const { isRefreshing } = useAuth();
+  const { isRefreshing, isLoggedIn } = useAuth();
 
   useEffect(() => {
-    dispatch(refreshUser());
-  }, [dispatch]);
+    if (!isLoggedIn && !isRefreshing) {
+      dispatch(refreshUser());
+    }
+  }, [dispatch, isLoggedIn, isRefreshing]);
 
-  return isRefreshing ? (
-    <b>Refreshing user...</b>
-  ) : (
+  return (
     <>
       <Routes>
         <Route
           path="/"
           element={
-            <PrivateRoute redirectTo="/signin" element={<SharedLayout />} />
+            <PrivateRoute redirectTo="signin" element={<SharedLayout />} />
           }
         >
           <Route
             path="/mainpage"
             element={
-              <PrivateRoute redirectTo="/signin" element={<MainPage />} />
+              <PrivateRoute redirectTo="signin" element={<MainPage />} />
+            }
+          />
+          <Route
+            path="/connect"
+            element={
+              <PrivateRoute redirectTo="signin">
+                <RoomProvider>
+                  <ConnectPage />
+                </RoomProvider>
+              </PrivateRoute>
             }
           />
           <Route
             path="/profile"
             element={
-              <PrivateRoute redirectTo="/signin" element={<ProfilePage />} />
+              <PrivateRoute redirectTo="signin" element={<ProfilePage />} />
             }
           />
           <Route
             path="/settings"
             element={
-              <PrivateRoute redirectTo="/signin" element={<SettingsPage />} />
+              <PrivateRoute redirectTo="signin" element={<SettingsPage />} />
             }
           />
           <Route
             path="/rating"
             element={
-              <PrivateRoute redirectTo="/signin" element={<RatingPage />} />
+              <PrivateRoute redirectTo="signin" element={<RatingPage />} />
             }
           />
         </Route>
+
+        <Route
+          path="/chatRoom/:id"
+          element={
+            <PrivateRoute redirectTo="signin">
+              <RoomProvider>
+                <ChatRoom />
+              </RoomProvider>
+            </PrivateRoute>
+          }
+        />
+
         <Route
           path="/signin"
           index
-          element={<RestrictedRoute redirectTo="/" element={<LogPage />} />}
+          element={<RestrictedRoute redirectTo="/mainpage" element={<LogPage />} />}
         />
       </Routes>
     </>
