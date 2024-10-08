@@ -18,6 +18,8 @@ import {
   
   const server = "https://api.friendsrate.org";
 
+  const server2 = "http://localhost:3000/";
+
   export interface OpositUser{
     userName: string,
     avatarURL: string,
@@ -36,7 +38,7 @@ import {
     clearPeers: () => void;
   } | null>(null); 
   
-  const ws = socketIOClient(server);
+  const ws = socketIOClient(server2);
   
   export const RoomProvider = ({ children }: { children: React.ReactNode }) => {
     const [me, setMe] = useState<Peer | null>(null);
@@ -76,7 +78,7 @@ import {
         setRateModalOpen(true);
       } else {
         if (user) {
-          navigate("/main"); 
+          navigate("/mainpage"); 
         } else {
           navigate("/"); 
         }

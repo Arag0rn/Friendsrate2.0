@@ -1,24 +1,64 @@
-  import { ConnectionIcon } from "../Logo";
+import { ConnectionIcon, EndOfCallIcon, MuteIcon } from "../Logo";
+import { useContext, useEffect, useState } from "react";
+import { OpositUser, RoomContext } from "../Context/RoomContext";
+import { Audio } from "../ChatRoomComp/Audio";
+import { useSelector } from "react-redux";
+import { usersNames } from "../../redux/Users/selectors";
+import { ConnectionRing } from "./ConnectionRing";
+import { useAuth } from "../../redux/Hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
-  export const ConnectPageComp = () => {
-      return (
-        <div className="flex flex-col justify-center items-center h-screen">
-          <div className="relative w-[366px] h-[366px]">
-    
-            <div className="absolute top-[50%] left-[50%] w-[274px] h-[274px] rounded-full bg-[#B4E3FF] ring-container transform -translate-x-[50%] -translate-y-[50%] z-30"></div>
-    
-      
-            <div className="absolute top-[50%] left-[50%] w-[324px] h-[324px] rounded-full bg-[#D5EEFF] ring-container transform -translate-x-[50%] -translate-y-[50%] z-20"></div>
+export const ConnectPageComp = () => {
+    const [isConnected, setIsConnected] = useState(false);
+    const { ws, me, peers, stream, clearPeers } = useContext(RoomContext);
+    const usersInRoom = useSelector(usersNames);
+    const { user } = useAuth();
+    const [isMuted, setIsMuted] = useState(false);
+    const navigate = useNavigate(); 
 
-            <div className="absolute top-[50%] left-[50%] w-[366px] h-[366px] rounded-full bg-[#ECF8FF] ring-container transform -translate-x-[50%] -translate-y-[50%] z-10"></div>
-    
-  
-            <div className="absolute top-[50%] left-[50%] w-[216px] h-[216px] bg-[#80D3FF] rounded-full transform -translate-x-[50%] -translate-y-[50%] z-40">
-            <ConnectionIcon width={64} height={73} style={{position: "absolute", top: "50%", left: "50%",  transform: "translate(-50%, -50%)"}}/>
-            </div>
-          </div>
-          <span className="text-center text-[#ECF8FF] font-fixel text-3xl font-bold leading-normal">Searching a new stranger...</span>
-      
-        </div>
-      );
+    const opositUser: OpositUser | null = Array.isArray(usersInRoom) 
+        ? usersInRoom.find((u: OpositUser) => u.userName !== user?.username) || null 
+        : null;
+
+    useEffect(() => {
+        if (Object.values(peers).length > 1) {
+            setIsConnected(true);
+        }
+    }, [peers]);
+
+    const onMuteChange = () => {
+        setIsMuted(prev => !prev); 
     };
+
+    const handleEndCall = () => {
+        ws.emit("end-call");
+        clearPeers();
+        if (user) {
+          navigate('/mainpage');
+        } else {
+          navigate('/');
+        }
+    };
+
+    return (
+        <>
+            {isConnected ? (
+                <>
+                    {Object.values(peers).map((peer: any) => (
+                        peer.id !== me?.id && <Audio key={peer.id} stream={peer.stream} isMuted={isMuted} />
+                    ))}
+                    <div className=''>
+                        <button onClick={onMuteChange} style={{ background: "transparent", border: 'none' }}>
+                            {isMuted ? <MuteIcon width={33} height={35}/> : <ConnectionIcon width={33} height={35}/>}
+                        </button>
+                        <button onClick={handleEndCall} style={{ background: "transparent", border: 'none', zIndex: '1000' }}>
+                            <EndOfCallIcon width={44} height={44}/>
+                        </button>
+                    </div>
+                </>
+            ) : (
+                <ConnectionRing/>
+            )}
+        </>
+    );
+};

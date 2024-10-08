@@ -11,18 +11,17 @@ interface PrivateRouteProps {
 
 
 
-  export const PrivateRoute: React.FC<PrivateRouteProps> = ({ element, children }) => {
-    const { isLoggedIn, isRefreshing, isRehydrated  } = useAuth(); 
+  export const PrivateRoute: React.FC<PrivateRouteProps> = ({ element, children,  redirectTo = '/'  }) => {
+    const { isLoggedIn, isRefreshing,  } = useAuth(); 
     const location = useLocation()
-    console.log(location);
     
 
-    if (!isRehydrated || isRefreshing) {
+    if ( isRefreshing) {
       return <p>Loading...</p>;
     }
   
   
     const shouldRedirect = !isLoggedIn && !isRefreshing;
   
-    return shouldRedirect ? <Navigate to={location} state={{from: location}}/> :  <>{element}{children}</>;
+    return shouldRedirect ? <Navigate to={redirectTo}/> :  <>{element}{children}</>;
   };

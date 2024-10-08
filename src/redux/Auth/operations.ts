@@ -194,11 +194,6 @@ export const updateImageProfile = createAsyncThunk('auth/update-avatar',
     return res.data;
 });
 
-export const googleAuthorized = createAsyncThunk('auth/google',
-  async () => {
-    window.location.href = process.env.NEXT_PUBLIC_GOOGLE_AUTHORIZED_URL as string;
-  }
-);
 
 
 

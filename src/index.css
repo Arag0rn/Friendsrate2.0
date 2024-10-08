@@ -46,17 +46,17 @@ body {
   }
   
   .ring-container {
-    animation: fadeIn 3s ease-in-out infinite; /* Анимация на 3 секунды с бесконечным циклом */
+    animation: fadeIn 3s ease-in-out infinite; 
   }
   
   .ring-container:nth-child(1) {
-    animation-delay: 0s; /* Первое кольцо начинается немедленно */
+    animation-delay: 0s; 
   }
   
   .ring-container:nth-child(2) {
-    animation-delay: 1s; /* Второе кольцо начинается через 1 секунду */
+    animation-delay: 1s; 
   }
   
   .ring-container:nth-child(3) {
-    animation-delay: 2s; /* Третье кольцо начинается через 2 секунды */
+    animation-delay: 2s; 
   }

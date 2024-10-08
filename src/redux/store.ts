@@ -20,8 +20,9 @@ import { nonAuthReducer } from "./Unregistred/slice";
 const authPersistConfig = {
   key: 'auth',
   storage: storage,
-  whitelist: ['token', 'user'],
+  whitelist: ['token'],
 };
+
 
 
 export const store = configureStore({

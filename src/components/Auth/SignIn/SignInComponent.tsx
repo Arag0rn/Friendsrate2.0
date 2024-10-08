@@ -14,9 +14,9 @@ export const SignInComponent = () => {
             <div className='mt-[22px]'>
               <TelegramLogin />
               </div>
-            {/* <a href="https://api.friendsrate.org/api/user/google" className="flex items-center space-x-2">
+            <a href="http://localhost:3000/api/user/google" className="flex items-center space-x-2 bg-white px-6 py-2 rounded-xl">
               <span className="text-gray-700">Google</span>
-            </a> */}
+            </a>
           </div>
     </div>
   );

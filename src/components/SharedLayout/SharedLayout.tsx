@@ -36,7 +36,9 @@ const SharedLayout = () => {
 
     return (
         <div className="flex flex-col lg:flex-row ">
-            <BackgroundBlurs><Outlet /></BackgroundBlurs>
+            <BackgroundBlurs>
+                <Outlet />
+            </BackgroundBlurs>
        
             <div
                 className={`${isMobile

@@ -1,4 +1,5 @@
-import { ChatRoomComp } from "../components/ChatRoomComp/ChatRoomComp";
+
+import { ConnectPageComp } from "../components/ConnectPageComp/ConnectPageComp";
 
 
 
@@ -7,7 +8,7 @@ export default function ChatRoom () {
     return (
  
         <>
-        <ChatRoomComp/>
+        <ConnectPageComp/>
         </>
     )
   }
